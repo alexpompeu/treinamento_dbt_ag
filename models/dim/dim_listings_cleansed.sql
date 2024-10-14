@@ -26,6 +26,11 @@ SELECT
  2
  ) AS price,
  created_at,
- updated_at
+ updated_at,
+     CASE
+        WHEN price < 100 THEN 'Budget'
+        WHEN price < 300 THEN 'Moderate'
+        ELSE 'Luxury'
+    END AS price_category
 FROM
  src_listings
